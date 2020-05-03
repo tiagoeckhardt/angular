@@ -13,4 +13,4 @@ steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.6'
-- script: python -m pip install --upgrade pip setuptools wheel && pip install tabula-py && python3 -m pdb pdftojson.ipynb
+- script: python3 -m pip3 install --upgrade pip3 setuptools wheel tabula-py && python3 -m pdb pdftojson.ipynb
