@@ -1,11 +1,3 @@
-language: python
-python:
-  - "2.7" 
-# command to install dependencies
-install:
-  - pip install tabula-py
-script: python3 pdftojson.ipynb || python pdftojson.ipynb
-
 # Disable sudo to speed up the build
 sudo: false
 
