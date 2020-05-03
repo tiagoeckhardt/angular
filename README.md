@@ -1,3 +1,3 @@
 # angular
 
-tiagoeckhardt.github.io/angular/
+http://tiagoeckhardt.github.io/angular/
