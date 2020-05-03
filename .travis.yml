@@ -5,3 +5,25 @@ python:
 install:
   - pip install tabula-py
 script: python3 pdftojson.ipynb || python pdftojson.ipynb
+
+# Disable sudo to speed up the build
+sudo: false
+
+# Set the build language to Python
+language: python
+
+# Set the python version to 2.7
+python: 2.7
+
+# Install the codecov pip dependency
+install:
+  - pip install codecov
+  - pip install tabula-py
+
+# Run the unit test
+script:
+  - coverage run pdftojson.ipynb
+
+# Push the results back to codecov
+after_success:
+  - python3 pdftojson.ipynb || python pdftojson.ipynb
