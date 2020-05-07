@@ -12,5 +12,5 @@ pool:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '2.7'
+    versionSpec: '2.7.1'
 - script: sudo pip install tabula-py && python pdftojson.ipynb
