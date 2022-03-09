@@ -9,9 +9,7 @@
 <table cellpadding="5" cellspacing="0" border="0"><tr>
 <td valign="top" align="left"><font face="Verdana,MS Sans Serif" size="2"><b>
     <title>Auto-avaliação do(s) olho(s)</title>
-    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Questionário sobre desconforto ocular</h1>
-
-    <hr>
+<h1>1. Questionário sobre desconforto ocular</h1>
 
     <form action="" method="GET">
     <div ng-app="">
@@ -29,10 +27,8 @@
  			 <input type="checkbox" ng-model="selected1" ng-true-value="4" ng-false-value="0">Forte
  			 <input type="checkbox" ng-model="selected1" ng-true-value="5" ng-false-value="0">Bastante
 
-    	    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Questionário sobre olho(s) seco(s)</h1>
-    	    
-    	    <hr>
-    	    
+<h1>2. Questionário sobre olho(s) seco(s)</h1>
+    	       	    
     	    <p>a. Durante um dia típico no passado mês, qual a frequência de olho(s) seco(s)?<br>
              <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
              <input type="radio" ng-model="option2" ng-value="1">Raramente<br>
@@ -46,10 +42,8 @@
   			 <input type="checkbox" ng-model="selected2" ng-true-value="3" ng-false-value="0">Moderado
  			 <input type="checkbox" ng-model="selected2" ng-true-value="4" ng-false-value="0">Forte
  			 <input type="checkbox" ng-model="selected2" ng-true-value="5" ng-false-value="0">Bastante
-    	    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Questionário sobre olho(s) lacrimejante(s)</h1>
-    	    
-    	    <hr>
-    	    
+<h1>3. Questionário sobre olho(s) lacrimejante(s)</h1>
+    	       	    
     	    <p>Durante um dia típico no passado mês, qual a frequência de olho(s) lacrimejante(s)?<br>
  			 <input type="checkbox" ng-model="selected3" ng-true-value="0" ng-false-value="0">Nunca tive
  			 <input type="checkbox" ng-model="selected3" ng-true-value="1" ng-false-value="0">Suave
@@ -57,12 +51,13 @@
   			 <input type="checkbox" ng-model="selected3" ng-true-value="3" ng-false-value="0">Moderado
  			 <input type="checkbox" ng-model="selected3" ng-true-value="4" ng-false-value="0">Forte
  			 <input type="checkbox" ng-model="selected3" ng-true-value="5" ng-false-value="0">Bastante
-<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pontuação: {{option1 + selected1 + option2 + selected2 + selected3}}</h1>
-
+<h1>Pontuação: {{option1 + selected1 + option2 + selected2 + selected3}}</h1>
+    <br>
+<div ng-show="option1 + selected1 + option2 + selected2 + selected3 > 6">O critério para deficiência do olho(s) seco(s) foi alcançada segundo Chalmers, Robin L., Carolyn G. Begley, and Barbara Caffery. 2010. "Validation of the 5-Item Dry Eye Questionnaire (DEQ-5): Discrimination Across Self-Assessed Severity and Aqueous Tear Deficient Dry Eye Diagnoses". Contact Lens and Anterior Eye. 33, no. 2: 55-60. <a href="https://doi.org/10.1016/j.clae.2009.12.010">https://doi.org/10.1016/j.clae.2009.12.010<a></a></div>
+<div ng-show="option1 + selected1 + option2 + selected2 + selected3 > 12">É necessário mais testes para examinar possibilidade de Síndrome de Sjögren.</div> 
   			
     </form>
     <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
     </p>
 </body>
 </html>
