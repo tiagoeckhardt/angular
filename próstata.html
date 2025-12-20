@@ -51,7 +51,7 @@
 
         <!-- PERGUNTA 1 -->
         <fieldset>
-            <legend>1. Esvaziamento incompleto</legend>
+            <legend>Esvaziamento incompleto. Com que frequência já teve a sensação de não esvaziar completamente a bexiga?</legend>
             <label><input type="radio" ng-model="option1" ng-value="0">Nunca</label><br>
             <label><input type="radio" ng-model="option1" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
             <label><input type="radio" ng-model="option1" ng-value="2">Menos de metade das vezes</label><br>
@@ -62,7 +62,7 @@
 
         <!-- PERGUNTA 2 -->
         <fieldset>
-            <legend>2. Frequência — urinar com intervalos inferiores a duas horas</legend>
+            <legend>2. Frequência. Com que frequência teve de urinar com intervalos inferiores a duas horas?</legend>
             <label><input type="radio" ng-model="option2" ng-value="0">Nunca</label><br>
             <label><input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
             <label><input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes</label><br>
@@ -73,7 +73,7 @@
 
         <!-- PERGUNTA 3 -->
         <fieldset>
-            <legend>3. Intermitência — parar e recomeçar ao urinar</legend>
+            <legend>3. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?</legend>
             <label><input type="radio" ng-model="option3" ng-value="0">Nunca</label><br>
             <label><input type="radio" ng-model="option3" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
             <label><input type="radio" ng-model="option3" ng-value="2">Menos de metade das vezes</label><br>
@@ -95,7 +95,7 @@
 
         <!-- PERGUNTA 5 -->
         <fieldset>
-            <legend>5. Jorro urinário fraco</legend>
+            <legend>5. Jorro urinário fraco. Com que frequência teve um jorro urinário fraco?</legend>
             <label><input type="radio" ng-model="option5" ng-value="0">Nunca</label><br>
             <label><input type="radio" ng-model="option5" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
             <label><input type="radio" ng-model="option5" ng-value="2">Menos de metade das vezes</label><br>
@@ -106,7 +106,7 @@
 
         <!-- PERGUNTA 6 -->
         <fieldset>
-            <legend>6. Esforço para urinar</legend>
+            <legend>6. Esforço para urinar. Com que frequência precisou fazer esforço para começar a urinar?</legend>
             <label><input type="radio" ng-model="option6" ng-value="0">Nunca</label><br>
             <label><input type="radio" ng-model="option6" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
             <label><input type="radio" ng-model="option6" ng-value="2">Menos de metade das vezes</label><br>
@@ -117,7 +117,7 @@
 
         <!-- PERGUNTA 7 -->
         <fieldset>
-            <legend>7. Número de vezes que se levantou à noite para urinar</legend>
+            <legend>7. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?</legend>
             <label><input type="radio" ng-model="option7" ng-value="0">Nenhuma</label><br>
             <label><input type="radio" ng-model="option7" ng-value="1">Uma vez</label><br>
             <label><input type="radio" ng-model="option7" ng-value="2">Duas vezes</label><br>
@@ -154,7 +154,9 @@
         </fieldset>
 
         <h1>Pontuação: {{option8}}</h1>
-
+        <div ng-show="option8 >= 0">
+            Embora o critério desta única questão possa ou não captar o impacto global dos sintomas da hiperplasia benigna da próstata (HBP) ou da qualidade de vida, pode servir como um ponto de partida valioso para uma conversa com o médico.
+        </div>
     </form>
 
 </body>
