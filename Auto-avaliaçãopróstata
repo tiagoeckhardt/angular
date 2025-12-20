@@ -28,69 +28,55 @@
             <input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</p>
             <input type="radio" ng-model="option2" ng-value="5">Quase sempre</p>
             <p>3. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?<br>
-            <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
-            <input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes<br>
-            <input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="3">Metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</p>
-            <input type="radio" ng-model="option2" ng-value="5">Quase sempre</p>
-            <p>4. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?<br>
-            <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
-            <input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes<br>
-            <input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="3">Metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</p>
-            <input type="radio" ng-model="option2" ng-value="5">Quase sempre</p>
-            <p>5. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?<br>
-            <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
-            <input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes<br>
-            <input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="3">Metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</p>
-            <input type="radio" ng-model="option2" ng-value="5">Quase sempre</p>
-            <p>6. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?<br>
-            <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
-            <input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes<br>
-            <input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="3">Metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</p>
-            <input type="radio" ng-model="option2" ng-value="5">Quase sempre</p>
+            <input type="radio" ng-model="option3" ng-value="0">Nunca<br>
+            <input type="radio" ng-model="option3" ng-value="1">Menos de 1 em cada 5 vezes<br>
+            <input type="radio" ng-model="option3" ng-value="2">Menos de metade das vezes<br>
+            <input type="radio" ng-model="option3" ng-value="3">Metade das vezes<br>
+            <input type="radio" ng-model="option3" ng-value="4">Mais de metade das vezes</p>
+            <input type="radio" ng-model="option3" ng-value="5">Quase sempre</p>
+            <p>4. Dificuldade em adiar a micção?<br>
+            <input type="radio" ng-model="option4" ng-value="0">Nunca<br>
+            <input type="radio" ng-model="option4" ng-value="1">Menos de 1 em cada 5 vezes<br>
+            <input type="radio" ng-model="option4" ng-value="2">Menos de metade das vezes<br>
+            <input type="radio" ng-model="option4" ng-value="3">Metade das vezes<br>
+            <input type="radio" ng-model="option4" ng-value="4">Mais de metade das vezes</p>
+            <input type="radio" ng-model="option4" ng-value="5">Quase sempre</p>
+            <p>5. Jorro urinário fraco. Com que frequência teve um jorro urinário fraco?<br>
+            <input type="radio" ng-model="option5" ng-value="0">Nunca<br>
+            <input type="radio" ng-model="option5" ng-value="1">Menos de 1 em cada 5 vezes<br>
+            <input type="radio" ng-model="option5" ng-value="2">Menos de metade das vezes<br>
+            <input type="radio" ng-model="option5" ng-value="3">Metade das vezes<br>
+            <input type="radio" ng-model="option5" ng-value="4">Mais de metade das vezes</p>
+            <input type="radio" ng-model="option5" ng-value="5">Quase sempre</p>
+            <p>6. Esforço para urinar. Com que frequência precisou fazer esforço para começar a urinar?<br>
+            <input type="radio" ng-model="option6" ng-value="0">Nunca<br>
+            <input type="radio" ng-model="option6" ng-value="1">Menos de 1 em cada 5 vezes<br>
+            <input type="radio" ng-model="option6" ng-value="2">Menos de metade das vezes<br>
+            <input type="radio" ng-model="option6" ng-value="3">Metade das vezes<br>
+            <input type="radio" ng-model="option6" ng-value="4">Mais de metade das vezes</p>
+            <input type="radio" ng-model="option6" ng-value="5">Quase sempre</p>
             <p>7. Intermitência. Com que frequência você apercebeu-se que parou e recomeçou várias vezes ao urinar?<br>
-            <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
-            <input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes<br>
-            <input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="3">Metade das vezes<br>
-            <input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</p>
-            <input type="radio" ng-model="option2" ng-value="5">Quase sempre</p>
-<h1>2. Questionário sobre olho(s) seco(s)</h1>
-    	       	    
-    	    <p>a. Durante um dia típico no passado mês, qual a frequência de olho(s) seco(s)?<br>
-             <input type="radio" ng-model="option2" ng-value="0">Nunca<br>
-             <input type="radio" ng-model="option2" ng-value="1">Raramente<br>
-             <input type="radio" ng-model="option2" ng-value="2">Às vezes<br>
-             <input type="radio" ng-model="option2" ng-value="3">Frequentemente<br>
-             <input type="radio" ng-model="option2" ng-value="4">Constantemente</p>
-            <p>b. Quando sente o olho(s) seco(s), quão intenso foi esse sentimento no final do dia, duas horas antes de ir para a cama?<br>
- 			 <input type="checkbox" ng-model="selected2" ng-true-value="0" ng-false-value="0">Nunca tive
- 			 <input type="checkbox" ng-model="selected2" ng-true-value="1" ng-false-value="0">Suave
- 			 <input type="checkbox" ng-model="selected2" ng-true-value="2" ng-false-value="0">Ligeiro
-  			 <input type="checkbox" ng-model="selected2" ng-true-value="3" ng-false-value="0">Moderado
- 			 <input type="checkbox" ng-model="selected2" ng-true-value="4" ng-false-value="0">Forte
- 			 <input type="checkbox" ng-model="selected2" ng-true-value="5" ng-false-value="0">Bastante
-<h1>3. Questionário sobre olho(s) lacrimejante(s)</h1>
-    	       	    
-    	    <p>Durante um dia típico no passado mês, qual a frequência de olho(s) lacrimejante(s)?<br>
- 			 <input type="checkbox" ng-model="selected3" ng-true-value="0" ng-false-value="0">Nunca tive
- 			 <input type="checkbox" ng-model="selected3" ng-true-value="1" ng-false-value="0">Suave
- 			 <input type="checkbox" ng-model="selected3" ng-true-value="2" ng-false-value="0">Ligeiro
-  			 <input type="checkbox" ng-model="selected3" ng-true-value="3" ng-false-value="0">Moderado
- 			 <input type="checkbox" ng-model="selected3" ng-true-value="4" ng-false-value="0">Forte
- 			 <input type="checkbox" ng-model="selected3" ng-true-value="5" ng-false-value="0">Bastante
-<h1>Pontuação: {{option1 + selected1 + option2 + selected2 + selected3}}</h1>
+            <input type="radio" ng-model="option7" ng-value="0">Nenhuma<br>
+            <input type="radio" ng-model="option7" ng-value="1">Uma vez<br>
+            <input type="radio" ng-model="option7" ng-value="2">Duas vezes<br>
+            <input type="radio" ng-model="option7" ng-value="3">Três vezes<br>
+            <input type="radio" ng-model="option7" ng-value="4">Quatro vezes</p>
+            <input type="radio" ng-model="option7" ng-value="5">Cinco e mais vezes</p>
+<h1>Pontuação: {{option1 + option2 + option3 + option4 + option5 + option6 + option7}}</h1>
     <br>
-<div ng-show="option1 + selected1 + option2 + selected2 + selected3 > 6">O critério para deficiência do olho(s) seco(s) foi alcançada segundo Chalmers, Robin L., Carolyn G. Begley, and Barbara Caffery. 2010. "Validation of the 5-Item Dry Eye Questionnaire (DEQ-5): Discrimination Across Self-Assessed Severity and Aqueous Tear Deficient Dry Eye Diagnoses". Contact Lens and Anterior Eye. 33, no. 2: 55-60. <a href="https://doi.org/10.1016/j.clae.2009.12.010">https://doi.org/10.1016/j.clae.2009.12.010<a></a></div>
-<div ng-show="option1 + selected1 + option2 + selected2 + selected3 > 12">É necessário mais testes para examinar possibilidade de Síndrome de Sjögren.</div> 
-  			
+<div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 < 8">O critério para o sintoma da próstata deu um resultado suave.</div>
+<div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 > 7 < 20">O critério para o sintoma da próstata deu um resultado moderado.</div>
+<div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 < 19">O critério para o sintoma da próstata deu um resultado severo.</div> 
+            <h1>Qualidade de vida devido à sintomas urinários</h1>
+    	    <p>Se tivesse de passar o resto da sua vida com a sua condição urinária exatamente como ela está agora, como se sentiria?<br>
+            <input type="radio" ng-model="option8" ng-value="0">Encantado(a)<br>
+            <input type="radio" ng-model="option8" ng-value="1">Agradado(a)<br>
+            <input type="radio" ng-model="option8" ng-value="2">Satisfeito(a)<br>
+            <input type="radio" ng-model="option8" ng-value="3">Mais ou menos<br>
+            <input type="radio" ng-model="option8" ng-value="4">Insatisfeito(a)</p>
+            <input type="radio" ng-model="option8" ng-value="5">Muito Insatisfeito(a)</p>
+            <input type="radio" ng-model="option8" ng-value="6">Mal</p>
+<div ng-show="option8 <= 0">Embora o critério desta única questão possa ou não captar o impacto global dos sintomas da hiperplasia benigna da próstata (HBP) ou da qualidade de vida, pode servir como um ponto de partida valioso para uma conversa com o médico.</div> 
     </form>
     <br>
     </p>
