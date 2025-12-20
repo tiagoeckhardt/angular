@@ -1,45 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt" ng-app="app">
+<html lang="pt" ng-app>
 <head>
     <meta charset="UTF-8">
     <title>Auto-avaliação do índice internacional de sintomas da próstata</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
 
     <style>
         body {
             background-color: #000000;
             color: #009933;
-            font-family: Verdana, "MS Sans Serif", sans-serif;
         }
 
-        h1, h2 {
-            color: #00cc66;
-        }
-
-        .question {
-            margin-bottom: 20px;
-        }
-
+        /* Substitui o <marquee> por animação acessível */
         .marquee {
-            width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            box-sizing: border-box;
-            animation: marquee 12s linear infinite;
+            animation: slide 12s linear infinite;
+            padding: 10px;
             background: #000;
-            padding: 10px 0;
             font-weight: bold;
-            color: #00cc66;
         }
 
-        @keyframes marquee {
-            0% { text-indent: 100% }
-            100% { text-indent: -100% }
+        @keyframes slide {
+            0% { transform: translateX(100%) }
+            100% { transform: translateX(-100%) }
         }
 
-        /* Acessibilidade */
-        input[type="radio"] {
-            margin-right: 6px;
+        fieldset {
+            border: 1px solid #009933;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        legend {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -50,174 +45,117 @@
         Questionário de auto-avaliação do índice internacional de sintomas da próstata
     </div>
 
-    <main role="main">
-        <h1>Questionário sobre sintomas da próstata durante o último mês</h1>
+    <h1>Questionário sobre sintomas da próstata durante o último mês.</h1>
 
-        <form aria-describedby="descricao-formulario">
-            <p id="descricao-formulario">
-                Responda às questões abaixo selecionando a opção que melhor descreve a sua experiência.
-            </p>
+    <form>
 
-            <!-- INÍCIO DO QUESTIONÁRIO -->
-            <div class="question" ng-repeat="q in perguntas">
-                <fieldset>
-                    <legend>{{q.texto}}</legend>
+        <!-- PERGUNTA 1 -->
+        <fieldset>
+            <legend>1. Esvaziamento incompleto</legend>
+            <label><input type="radio" ng-model="option1" ng-value="0">Nunca</label><br>
+            <label><input type="radio" ng-model="option1" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
+            <label><input type="radio" ng-model="option1" ng-value="2">Menos de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option1" ng-value="3">Metade das vezes</label><br>
+            <label><input type="radio" ng-model="option1" ng-value="4">Mais de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option1" ng-value="5">Quase sempre</label>
+        </fieldset>
 
-                    <label ng-repeat="op in q.opcoes">
-                        <input type="radio"
-                               ng-model="q.valor"
-                               ng-value="op.valor"
-                               aria-label="{{op.label}}">
-                        {{op.label}}
-                        <br>
-                    </label>
-                </fieldset>
-            </div>
+        <!-- PERGUNTA 2 -->
+        <fieldset>
+            <legend>2. Frequência — urinar com intervalos inferiores a duas horas</legend>
+            <label><input type="radio" ng-model="option2" ng-value="0">Nunca</label><br>
+            <label><input type="radio" ng-model="option2" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
+            <label><input type="radio" ng-model="option2" ng-value="2">Menos de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option2" ng-value="3">Metade das vezes</label><br>
+            <label><input type="radio" ng-model="option2" ng-value="4">Mais de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option2" ng-value="5">Quase sempre</label>
+        </fieldset>
 
-            <h2>Pontuação total: {{somar()}}</h2>
+        <!-- PERGUNTA 3 -->
+        <fieldset>
+            <legend>3. Intermitência — parar e recomeçar ao urinar</legend>
+            <label><input type="radio" ng-model="option3" ng-value="0">Nunca</label><br>
+            <label><input type="radio" ng-model="option3" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
+            <label><input type="radio" ng-model="option3" ng-value="2">Menos de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option3" ng-value="3">Metade das vezes</label><br>
+            <label><input type="radio" ng-model="option3" ng-value="4">Mais de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option3" ng-value="5">Quase sempre</label>
+        </fieldset>
 
-            <div ng-if="somar() < 8">
-                Resultado: sintomas suaves.
-            </div>
+        <!-- PERGUNTA 4 -->
+        <fieldset>
+            <legend>4. Dificuldade em adiar a micção</legend>
+            <label><input type="radio" ng-model="option4" ng-value="0">Nunca</label><br>
+            <label><input type="radio" ng-model="option4" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
+            <label><input type="radio" ng-model="option4" ng-value="2">Menos de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option4" ng-value="3">Metade das vezes</label><br>
+            <label><input type="radio" ng-model="option4" ng-value="4">Mais de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option4" ng-value="5">Quase sempre</label>
+        </fieldset>
 
-            <div ng-if="somar() >= 8 && somar() < 20">
-                Resultado: sintomas moderados.
-            </div>
+        <!-- PERGUNTA 5 -->
+        <fieldset>
+            <legend>5. Jorro urinário fraco</legend>
+            <label><input type="radio" ng-model="option5" ng-value="0">Nunca</label><br>
+            <label><input type="radio" ng-model="option5" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
+            <label><input type="radio" ng-model="option5" ng-value="2">Menos de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option5" ng-value="3">Metade das vezes</label><br>
+            <label><input type="radio" ng-model="option5" ng-value="4">Mais de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option5" ng-value="5">Quase sempre</label>
+        </fieldset>
 
-            <div ng-if="somar() >= 20">
-                Resultado: sintomas severos.
-            </div>
+        <!-- PERGUNTA 6 -->
+        <fieldset>
+            <legend>6. Esforço para urinar</legend>
+            <label><input type="radio" ng-model="option6" ng-value="0">Nunca</label><br>
+            <label><input type="radio" ng-model="option6" ng-value="1">Menos de 1 em cada 5 vezes</label><br>
+            <label><input type="radio" ng-model="option6" ng-value="2">Menos de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option6" ng-value="3">Metade das vezes</label><br>
+            <label><input type="radio" ng-model="option6" ng-value="4">Mais de metade das vezes</label><br>
+            <label><input type="radio" ng-model="option6" ng-value="5">Quase sempre</label>
+        </fieldset>
 
-            <h2>Qualidade de vida devido aos sintomas urinários</h2>
+        <!-- PERGUNTA 7 -->
+        <fieldset>
+            <legend>7. Número de vezes que se levantou à noite para urinar</legend>
+            <label><input type="radio" ng-model="option7" ng-value="0">Nenhuma</label><br>
+            <label><input type="radio" ng-model="option7" ng-value="1">Uma vez</label><br>
+            <label><input type="radio" ng-model="option7" ng-value="2">Duas vezes</label><br>
+            <label><input type="radio" ng-model="option7" ng-value="3">Três vezes</label><br>
+            <label><input type="radio" ng-model="option7" ng-value="4">Quatro vezes</label><br>
+            <label><input type="radio" ng-model="option7" ng-value="5">Cinco ou mais vezes</label>
+        </fieldset>
 
-            <fieldset>
-                <legend>Se tivesse de viver assim para o resto da vida, como se sentiria?</legend>
+        <h1>Pontuação: {{option1 + option2 + option3 + option4 + option5 + option6 + option7}}</h1>
 
-                <label ng-repeat="op in qualidadeVida">
-                    <input type="radio"
-                           ng-model="qualidade"
-                           ng-value="op.valor"
-                           aria-label="{{op.label}}">
-                    {{op.label}}
-                    <br>
-                </label>
-            </fieldset>
+        <div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 < 8">
+            O critério para o sintoma da próstata deu um resultado suave.
+        </div>
 
-            <h2>Pontuação qualidade de vida: {{qualidade}}</h2>
+        <div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 >= 8 &&
+                     option1 + option2 + option3 + option4 + option5 + option6 + option7 < 20">
+            O critério para o sintoma da próstata deu um resultado moderado.
+        </div>
 
-            <div ng-if="qualidade === 0">
-                Embora esta questão isolada não determine todo o impacto dos sintomas,
-                pode ser um ponto de partida útil para conversar com um médico.
-            </div>
-        </form>
-    </main>
+        <div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 >= 20">
+            O critério para o sintoma da próstata deu um resultado severo.
+        </div>
 
-    <script>
-        angular.module("app", [])
-        .controller("WelcomeController", function($scope) {
+        <!-- QUALIDADE DE VIDA -->
+        <fieldset>
+            <legend>Qualidade de vida devido aos sintomas urinários</legend>
+            <label><input type="radio" ng-model="option8" ng-value="0">Encantado(a)</label><br>
+            <label><input type="radio" ng-model="option8" ng-value="1">Agradado(a)</label><br>
+            <label><input type="radio" ng-model="option8" ng-value="2">Satisfeito(a)</label><br>
+            <label><input type="radio" ng-model="option8" ng-value="3">Mais ou menos</label><br>
+            <label><input type="radio" ng-model="option8" ng-value="4">Insatisfeito(a)</label><br>
+            <label><input type="radio" ng-model="option8" ng-value="5">Muito Insatisfeito(a)</label><br>
+            <label><input type="radio" ng-model="option8" ng-value="6">Mal</label>
+        </fieldset>
 
-            $scope.perguntas = [
-                {
-                    texto: "1. Esvaziamento incompleto — sensação de não esvaziar completamente a bexiga",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nunca"},
-                        {valor: 1, label: "Menos de 1 em cada 5 vezes"},
-                        {valor: 2, label: "Menos de metade das vezes"},
-                        {valor: 3, label: "Metade das vezes"},
-                        {valor: 4, label: "Mais de metade das vezes"},
-                        {valor: 5, label: "Quase sempre"}
-                    ]
-                },
-                {
-                    texto: "2. Frequência — urinar com intervalos inferiores a duas horas",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nunca"},
-                        {valor: 1, label: "Menos de 1 em cada 5 vezes"},
-                        {valor: 2, label: "Menos de metade das vezes"},
-                        {valor: 3, label: "Metade das vezes"},
-                        {valor: 4, label: "Mais de metade das vezes"},
-                        {valor: 5, label: "Quase sempre"}
-                    ]
-                },
-                {
-                    texto: "3. Intermitência — parar e recomeçar várias vezes ao urinar",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nunca"},
-                        {valor: 1, label: "Menos de 1 em cada 5 vezes"},
-                        {valor: 2, label: "Menos de metade das vezes"},
-                        {valor: 3, label: "Metade das vezes"},
-                        {valor: 4, label: "Mais de metade das vezes"},
-                        {valor: 5, label: "Quase sempre"}
-                    ]
-                },
-                {
-                    texto: "4. Dificuldade em adiar a micção",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nunca"},
-                        {valor: 1, label: "Menos de 1 em cada 5 vezes"},
-                        {valor: 2, label: "Menos de metade das vezes"},
-                        {valor: 3, label: "Metade das vezes"},
-                        {valor: 4, label: "Mais de metade das vezes"},
-                        {valor: 5, label: "Quase sempre"}
-                    ]
-                },
-                {
-                    texto: "5. Jorro urinário fraco",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nunca"},
-                        {valor: 1, label: "Menos de 1 em cada 5 vezes"},
-                        {valor: 2, label: "Menos de metade das vezes"},
-                        {valor: 3, label: "Metade das vezes"},
-                        {valor: 4, label: "Mais de metade das vezes"},
-                        {valor: 5, label: "Quase sempre"}
-                    ]
-                },
-                {
-                    texto: "6. Esforço para urinar",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nunca"},
-                        {valor: 1, label: "Menos de 1 em cada 5 vezes"},
-                        {valor: 2, label: "Menos de metade das vezes"},
-                        {valor: 3, label: "Metade das vezes"},
-                        {valor: 4, label: "Mais de metade das vezes"},
-                        {valor: 5, label: "Quase sempre"}
-                    ]
-                },
-                {
-                    texto: "7. Número de vezes que se levantou à noite para urinar",
-                    valor: null,
-                    opcoes: [
-                        {valor: 0, label: "Nenhuma"},
-                        {valor: 1, label: "Uma vez"},
-                        {valor: 2, label: "Duas vezes"},
-                        {valor: 3, label: "Três vezes"},
-                        {valor: 4, label: "Quatro vezes"},
-                        {valor: 5, label: "Cinco ou mais vezes"}
-                    ]
-                }
-            ];
+        <h1>Pontuação: {{option8}}</h1>
 
-            $scope.qualidadeVida = [
-                {valor: 0, label: "Encantado(a)"},
-                {valor: 1, label: "Agradado(a)"},
-                {valor: 2, label: "Satisfeito(a)"},
-                {valor: 3, label: "Mais ou menos"},
-                {valor: 4, label: "Insatisfeito(a)"},
-                {valor: 5, label: "Muito insatisfeito(a)"},
-                {valor: 6, label: "Mal"}
-            ];
-
-            $scope.somar = function() {
-                return $scope.perguntas.reduce((acc, q) => acc + (q.valor || 0), 0);
-            };
-        });
-    </script>
+    </form>
 
 </body>
 </html>
