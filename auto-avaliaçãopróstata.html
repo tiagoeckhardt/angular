@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>  
 <HEAD></HEAD>
 <body bgcolor="##000000" text="#009933" link="#333366" alink="#000000" vlink="#333366" ng-controller="WelcomeController">
 <MARQUEE direction="right" bgcolor="##000000" loop="1" scrollamount="10" width="100%">Questionário de auto-avaliação do índice internacional de sintomas da próstata</MARQUEE>
@@ -66,17 +66,17 @@
     <br>
 <div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 < 8">O critério para o sintoma da próstata deu um resultado suave.</div>
 <div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 > 7 && option1 + option2 + option3 + option4 + option5 + option6 + option7 < 20">O critério para o sintoma da próstata deu um resultado moderado.</div>
-<div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 < 19">O critério para o sintoma da próstata deu um resultado severo.</div> 
+<div ng-show="option1 + option2 + option3 + option4 + option5 + option6 + option7 > 19">O critério para o sintoma da próstata deu um resultado severo.</div> 
             <h1>Qualidade de vida devido à sintomas urinários</h1>
     	    <p>Se tivesse de passar o resto da sua vida com a sua condição urinária exatamente como ela está agora, como se sentiria?<br>
-            <input type="radio" ng-model="option8" ng-value="0">Encantado(a)<br>
-            <input type="radio" ng-model="option8" ng-value="1">Agradado(a)<br>
-            <input type="radio" ng-model="option8" ng-value="2">Satisfeito(a)<br>
-            <input type="radio" ng-model="option8" ng-value="3">Mais ou menos<br>
-            <input type="radio" ng-model="option8" ng-value="4">Insatisfeito(a)<br>
-            <input type="radio" ng-model="option8" ng-value="5">Muito Insatisfeito(a)<br>
-            <input type="radio" ng-model="option8" ng-value="6">Mal</p>
-<div ng-show="option8 < 0 || option8 = 0">Embora o critério desta única questão possa ou não captar o impacto global dos sintomas da hiperplasia benigna da próstata (HBP) ou da qualidade de vida, pode servir como um ponto de partida valioso para uma conversa com o médico.</div> 
+            <input type="radio" ng-model="option8" ng-value="1">Encantado(a)<br>
+            <input type="radio" ng-model="option8" ng-value="2">Agradado(a)<br>
+            <input type="radio" ng-model="option8" ng-value="3">Satisfeito(a)<br>
+            <input type="radio" ng-model="option8" ng-value="4">Mais ou menos<br>
+            <input type="radio" ng-model="option8" ng-value="5">Insatisfeito(a)<br>
+            <input type="radio" ng-model="option8" ng-value="6">Muito Insatisfeito(a)<br>
+            <input type="radio" ng-model="option8" ng-value="7">Mal</p>
+<div ng-show="option8 < 1">Embora o critério desta única questão possa ou não captar o impacto global dos sintomas da hiperplasia benigna da próstata (HBP) ou da qualidade de vida, pode servir como um ponto de partida valioso para uma conversa com o médico.</div> 
     </form>
     <br>
     </p>
