@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="imcApp">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
+
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de IMC OMS</title>
+</head>
+
+<body bgcolor="#000000" text="#009933" link="#333366" alink="#000000" vlink="#333366" ng-controller="IMCController">
+
+<marquee direction="right" bgcolor="#000000" loop="1" scrollamount="10" width="100%">
+Calculadora de IMC segundo idade, sexo e referência OMS
+</marquee>
+
+<table width="100%" height="96%" border="0">
+<tr>
+<td valign="top" align="center">
+
+<table cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td valign="top" align="left">
+<font face="Verdana,MS Sans Serif" size="2"><b>
+
+<h1>Calculadora do Índice de Massa Corporal</h1>
+
+<form>
+
+<p>Sexo:<br>
+<input type="radio" ng-model="sexo" value="M"> Menino / Masculino<br>
+<input type="radio" ng-model="sexo" value="F"> Menina / Feminino
+</p>
+
+<p>Idade:<br>
+<input type="number" ng-model="idade" placeholder="Ex: 43">
+</p>
+
+<p>Unidade da idade:<br>
+<input type="radio" ng-model="unidadeIdade" value="anos"> Anos
+<input type="radio" ng-model="unidadeIdade" value="meses"> Meses<br>
+</p>
+
+<p>Peso em quilogramas:<br>
+<input type="number" ng-model="peso" placeholder="Ex: 75">
+</p>
+
+<p>Altura em metros:<br>
+<input type="number" step="0.01" ng-model="altura" placeholder="Ex: 1.70">
+</p>
+
+<button type="button" ng-click="calcular()">Calcular IMC</button>
+
+<h1 ng-show="imc">IMC: {{ imc | number:2 }}</h1>
+
+<h1 ng-show="resultado">Classificação: {{ resultado }}</h1>
+
+<div ng-show="nota" ng-bind-html="nota"></div>
+
+</form>
+
+<script>
+var app = angular.module("imcApp", ["ngSanitize"]);
+
+app.controller("IMCController", function($scope) {
+
+    $scope.unidadeIdade = "anos";
+
+    var tabelaOMS_0_5 = {
+        "M": [
+            {meses: 0,  menos2: 11.1, mais1: 14.8, mais2: 16.3},
+            {meses: 1,  menos2: 12.4, mais1: 16.3, mais2: 17.8},
+            {meses: 2,  menos2: 13.3, mais1: 17.3, mais2: 19.0},
+            {meses: 3,  menos2: 13.8, mais1: 17.9, mais2: 19.7},
+            {meses: 6,  menos2: 14.3, mais1: 18.3, mais2: 20.2},
+            {meses: 9,  menos2: 14.1, mais1: 18.0, mais2: 19.9},
+            {meses: 12, menos2: 13.8, mais1: 17.7, mais2: 19.6},
+            {meses: 18, menos2: 13.5, mais1: 17.3, mais2: 19.1},
+            {meses: 24, menos2: 13.3, mais1: 17.1, mais2: 18.9},
+            {meses: 36, menos2: 13.1, mais1: 16.8, mais2: 18.4},
+            {meses: 48, menos2: 13.0, mais1: 16.7, mais2: 18.2},
+            {meses: 60, menos2: 13.0, mais1: 16.7, mais2: 18.3}
+        ],
+        "F": [
+            {meses: 0,  menos2: 10.8, mais1: 14.6, mais2: 16.1},
+            {meses: 1,  menos2: 11.9, mais1: 15.8, mais2: 17.4},
+            {meses: 2,  menos2: 12.8, mais1: 16.8, mais2: 18.5},
+            {meses: 3,  menos2: 13.4, mais1: 17.4, mais2: 19.2},
+            {meses: 6,  menos2: 14.1, mais1: 18.1, mais2: 20.0},
+            {meses: 9,  menos2: 13.9, mais1: 17.9, mais2: 19.8},
+            {meses: 12, menos2: 13.6, mais1: 17.5, mais2: 19.4},
+            {meses: 18, menos2: 13.3, mais1: 17.2, mais2: 19.1},
+            {meses: 24, menos2: 13.1, mais1: 17.0, mais2: 18.9},
+            {meses: 36, menos2: 12.9, mais1: 16.8, mais2: 18.6},
+            {meses: 48, menos2: 12.8, mais1: 16.8, mais2: 18.5},
+            {meses: 60, menos2: 12.7, mais1: 16.9, mais2: 18.6}
+        ]
+    };
+
+    var tabelaOMS_5_19 = {
+        "M": [
+            {meses: 61,  menos2: 13.0, mais1: 16.8, mais2: 18.4},
+            {meses: 72,  menos2: 13.0, mais1: 17.0, mais2: 18.8},
+            {meses: 84,  menos2: 13.1, mais1: 17.4, mais2: 19.5},
+            {meses: 96,  menos2: 13.3, mais1: 18.0, mais2: 20.3},
+            {meses: 108, menos2: 13.5, mais1: 18.6, mais2: 21.2},
+            {meses: 120, menos2: 13.7, mais1: 19.3, mais2: 22.1},
+            {meses: 132, menos2: 14.1, mais1: 20.1, mais2: 23.2},
+            {meses: 144, menos2: 14.5, mais1: 21.0, mais2: 24.2},
+            {meses: 156, menos2: 15.0, mais1: 21.9, mais2: 25.2},
+            {meses: 168, menos2: 15.5, mais1: 22.7, mais2: 26.0},
+            {meses: 180, menos2: 16.0, mais1: 23.5, mais2: 26.8},
+            {meses: 192, menos2: 16.5, mais1: 24.2, mais2: 27.6},
+            {meses: 204, menos2: 17.0, mais1: 24.8, mais2: 28.3},
+            {meses: 216, menos2: 17.5, mais1: 25.0, mais2: 29.0},
+            {meses: 228, menos2: 18.0, mais1: 25.4, mais2: 29.7}
+        ],
+        "F": [
+            {meses: 61,  menos2: 12.7, mais1: 16.9, mais2: 18.6},
+            {meses: 72,  menos2: 12.7, mais1: 17.1, mais2: 19.1},
+            {meses: 84,  menos2: 12.9, mais1: 17.6, mais2: 19.8},
+            {meses: 96,  menos2: 13.1, mais1: 18.3, mais2: 20.7},
+            {meses: 108, menos2: 13.4, mais1: 19.1, mais2: 21.8},
+            {meses: 120, menos2: 13.8, mais1: 19.9, mais2: 22.9},
+            {meses: 132, menos2: 14.2, mais1: 20.8, mais2: 24.0},
+            {meses: 144, menos2: 14.7, mais1: 21.7, mais2: 25.2},
+            {meses: 156, menos2: 15.2, mais1: 22.6, mais2: 26.2},
+            {meses: 168, menos2: 15.7, mais1: 23.3, mais2: 27.1},
+            {meses: 180, menos2: 16.2, mais1: 23.9, mais2: 27.7},
+            {meses: 192, menos2: 16.6, mais1: 24.4, mais2: 28.2},
+            {meses: 204, menos2: 17.0, mais1: 24.7, mais2: 28.6},
+            {meses: 216, menos2: 17.3, mais1: 25.0, mais2: 29.0},
+            {meses: 228, menos2: 17.6, mais1: 25.0, mais2: 29.2}
+        ]
+    };
+
+    function idadeEmMeses() {
+        if ($scope.unidadeIdade == "anos") {
+            return $scope.idade * 12;
+        }
+        return $scope.idade;
+    }
+
+    function interpolar(tabela, meses) {
+        if (meses <= tabela[0].meses) return tabela[0];
+        if (meses >= tabela[tabela.length - 1].meses) return tabela[tabela.length - 1];
+
+        for (var i = 0; i < tabela.length - 1; i++) {
+            var a = tabela[i];
+            var b = tabela[i + 1];
+
+            if (meses >= a.meses && meses <= b.meses) {
+                var p = (meses - a.meses) / (b.meses - a.meses);
+
+                return {
+                    menos2: a.menos2 + p * (b.menos2 - a.menos2),
+                    mais1: a.mais1 + p * (b.mais1 - a.mais1),
+                    mais2: a.mais2 + p * (b.mais2 - a.mais2)
+                };
+            }
+        }
+    }
+
+    $scope.calcular = function() {
+
+        $scope.imc = null;
+        $scope.resultado = "";
+        $scope.nota = "";
+
+        if (!$scope.sexo || !$scope.idade || !$scope.peso || !$scope.altura) {
+            $scope.resultado = "Preencha todos os campos.";
+            return;
+        }
+
+        var meses = idadeEmMeses();
+        var anos = meses / 12;
+        var imc = $scope.peso / ($scope.altura * $scope.altura);
+
+        $scope.imc = imc;
+
+        if (meses < 0) {
+            $scope.resultado = "Idade inválida.";
+            return;
+        }
+
+        if (meses <= 60) {
+            var ref0 = interpolar(tabelaOMS_0_5[$scope.sexo], meses);
+
+            if (imc < ref0.menos2) {
+                $scope.resultado = "Baixo IMC para a idade";
+            } else if (imc <= ref0.mais1) {
+                $scope.resultado = "IMC adequado para a idade";
+            } else if (imc <= ref0.mais2) {
+                $scope.resultado = "Risco de excesso de peso";
+            } else {
+                $scope.resultado = "Excesso de peso";
+            }
+
+            $scope.nota =
+                'O critério para o peso foi avaliado segundo a referência OMS 0–5 anos: ' +
+                'Child Growth Standards, IMC por idade em z-score. ' +
+                '<a href="https://www.who.int/toolkits/child-growth-standards/standards/body-mass-index-for-age-bmi-for-age" target="_blank">Click para aqui para consultar referência OMS 0–5 anos</a>.';
+            return;
+        }
+
+        if (meses <= 228) {
+            var ref5 = interpolar(tabelaOMS_5_19[$scope.sexo], meses);
+
+            if (imc < ref5.menos2) {
+                $scope.resultado = "Magreza";
+            } else if (imc <= ref5.mais1) {
+                $scope.resultado = "Peso adequado para a idade";
+            } else if (imc <= ref5.mais2) {
+                $scope.resultado = "Excesso de peso";
+            } else {
+                $scope.resultado = "Obesidade";
+            }
+
+            $scope.nota =
+                'O critério para o peso foi avaliado segundo a referência OMS 5–19 anos: ' +
+                'Growth Reference 2007, IMC por idade em z-score. ' +
+                '<a href="https://www.who.int/tools/growth-reference-data-for-5to19-years/indicators/bmi-for-age" target="_blank">Click para aqui para consultar referência OMS 5–19 anos</a>.';
+            return;
+        }
+
+        if (anos >= 18) {
+            if (imc < 18.5) {
+                $scope.resultado = "Baixo peso";
+            } else if (imc < 25) {
+                $scope.resultado = "Peso normal";
+            } else if (imc < 30) {
+                $scope.resultado = "Excesso de peso";
+            } else {
+                $scope.resultado = "Obesidade";
+            }
+
+            $scope.nota =
+                'O critério para o peso foi avaliado segundo a classificação de IMC para adultos da OMS. ' +
+                '<a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank">Click para aqui para consultar referência OMS para adultos</a>.';
+            return;
+        }
+
+    };
+
+});
+</script>
+
+</b></font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
