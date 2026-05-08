@@ -6,3 +6,5 @@ https://tiagoeckhardt.github.io/angular/question%C3%A1riodeq5.html
 https://tiagoeckhardt.github.io/angular/auto-avalia%C3%A7%C3%A3opr%C3%B3stata.html
 # Autoavaliação da proporção do peso em relação à altura e idade
 https://tiagoeckhardt.github.io/angular/imc.html
+# Autoavaliação das horas de sono
+https://tiagoeckhardt.github.io/angular/dormir.html
