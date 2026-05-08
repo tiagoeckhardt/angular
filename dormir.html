@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="sonoApp">
+
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de sono por idade</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    background: #f5f7f6;
+    color: #1f2933;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 760px;
+    margin: 40px auto;
+    padding: 24px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #123524;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 28px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #cfd8d3;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.resultado {
+    margin-top: 28px;
+    padding: 20px;
+    border-radius: 14px;
+    background: #eef8f2;
+    border-left: 5px solid #2e7d4f;
+}
+
+.bom {
+    color: #1b7f3a;
+}
+
+.alerta {
+    color: #c62828;
+}
+
+.aviso {
+    color: #b26a00;
+}
+
+.hora {
+    font-size: 36px;
+    font-weight: bold;
+    color: #123524;
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+th {
+    background: #f0f4f2;
+}
+
+small {
+    color: #64748b;
+}
+
+a {
+    color: #2563eb;
+}
+</style>
+
+<script>
+var app = angular.module("sonoApp", []);
+
+app.controller("SonoController", function($scope) {
+
+    $scope.idade = 16;
+    $scope.unidadeIdade = "anos";
+    $scope.horasDormidas = 8;
+    $scope.horaAcordar = "07:00";
+
+
+    $scope.tabelaSono = [
+        {
+            nome: "0 a 3 meses",
+            minMeses: 0,
+            maxMeses: 3,
+            minHoras: 15,
+            maxHoras: 17,
+            fonte: "SNS/CHSJ"
+        },
+        {
+            nome: "3 a 12 meses",
+            minMeses: 3,
+            maxMeses: 12,
+            minHoras: 14,
+            maxHoras: 15,
+            fonte: "SNS/CHSJ"
+        },
+        {
+            nome: "1 a 3 anos",
+            minMeses: 12,
+            maxMeses: 36,
+            minHoras: 12,
+            maxHoras: 14,
+            fonte: "SNS/CHSJ / OMS"
+        },
+        {
+            nome: "3 a 5 anos",
+            minMeses: 36,
+            maxMeses: 72,
+            minHoras: 11,
+            maxHoras: 13,
+            fonte: "SNS/CHSJ / OMS"
+        },
+        {
+            nome: "6 a 12 anos",
+            minMeses: 72,
+            maxMeses: 144,
+            minHoras: 10,
+            maxHoras: 11,
+            fonte: "SNS/CHSJ"
+        },
+        {
+            nome: "12 a 18 anos",
+            minMeses: 144,
+            maxMeses: 216,
+            minHoras: 8.5,
+            maxHoras: 9.5,
+            fonte: "SNS/CHSJ"
+        },
+        {
+            nome: "Adulto ou idoso",
+            minMeses: 216,
+            maxMeses: 2000,
+            minHoras: 7,
+            maxHoras: 8,
+            fonte: "SNS/CHSJ"
+        }
+    ];
+
+    $scope.idadeEmMeses = function() {
+        if (!$scope.idade || $scope.idade < 0) {
+            return 0;
+        }
+
+        if ($scope.unidadeIdade === "meses") {
+            return $scope.idade;
+        }
+
+        return $scope.idade * 12;
+    };
+
+    $scope.recomendacao = function() {
+        var meses = $scope.idadeEmMeses();
+
+        for (var i = 0; i < $scope.tabelaSono.length; i++) {
+            var item = $scope.tabelaSono[i];
+
+            if (meses >= item.minMeses && meses < item.maxMeses) {
+                return item;
+            }
+        }
+
+        return null;
+    };
+
+    $scope.estadoSono = function() {
+        var rec = $scope.recomendacao();
+
+        if (!rec || !$scope.horasDormidas) {
+            return "";
+        }
+
+        if ($scope.horasDormidas < rec.minHoras) {
+            return "Dormiu menos do que o recomendado.";
+        }
+
+        if ($scope.horasDormidas > rec.maxHoras) {
+            return "Dormiu mais do que a referência habitual.";
+        }
+
+        return "Dormiu dentro do intervalo recomendado.";
+    };
+
+    $scope.classeEstado = function() {
+        var rec = $scope.recomendacao();
+
+        if (!rec || !$scope.horasDormidas) {
+            return "";
+        }
+
+        if ($scope.horasDormidas < rec.minHoras) {
+            return "alerta";
+        }
+
+        if ($scope.horasDormidas > rec.maxHoras) {
+            return "aviso";
+        }
+
+        return "bom";
+    };
+
+    $scope.horaIdealDeitar = function() {
+        var rec = $scope.recomendacao();
+
+        if (!rec || !$scope.horaAcordar) {
+            return "";
+        }
+
+        var partes = $scope.horaAcordar.split(":");
+        var hora = parseInt(partes[0]);
+        var minuto = parseInt(partes[1]);
+
+        var totalAcordar = hora * 60 + minuto;
+        var horasMedias = (rec.minHoras + rec.maxHoras) / 2;
+        var minutosSono = Math.round(horasMedias * 60);
+
+        var totalDeitar = totalAcordar - minutosSono;
+
+        while (totalDeitar < 0) {
+            totalDeitar += 24 * 60;
+        }
+
+        var h = Math.floor(totalDeitar / 60);
+        var m = totalDeitar % 60;
+
+        return (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m);
+    };
+
+});
+</script>
+</head>
+
+<body ng-controller="SonoController">
+
+<div class="container">
+    <div class="card">
+
+        <h1>Calculadora de Sono</h1>
+
+        <p>
+            Indica a idade, as horas dormidas e a hora de acordar.
+            A página compara com referências gerais de sono por idade.
+        </p>
+
+        <label>Idade</label>
+        <input type="number" ng-model="idade" min="0" step="1">
+
+        <label>Unidade</label>
+        <select ng-model="unidadeIdade">
+            <option value="anos">anos</option>
+            <option value="meses">meses</option>
+        </select>
+
+        <label>Horas dormidas</label>
+        <input type="number" ng-model="horasDormidas" min="0" max="24" step="0.5">
+
+        <label>Hora de acordar</label>
+        <input type="time" ng-model="horaAcordar">
+
+        <div class="resultado" ng-if="recomendacao()">
+            <h2>Resultado</h2>
+
+            <p>
+                <b>Idade de referência:</b> {{recomendacao().nome}}
+            </p>
+
+            <p>
+                <b>Recomendação:</b>
+                {{recomendacao().minHoras}} a {{recomendacao().maxHoras}} horas por dia
+            </p>
+
+            <p ng-class="classeEstado()">
+                <b>{{estadoSono()}}</b>
+            </p>
+
+            <p>
+                Hora aproximada para deitar:
+            </p>
+
+            <div class="hora">
+                {{horaIdealDeitar()}}
+            </div>
+
+            <small>
+                O cálculo usa a média do intervalo recomendado.
+            </small>
+        </div>
+
+        <h2>Tabela usada</h2>
+
+        <table>
+            <tr>
+                <th>Idade</th>
+                <th>Horas</th>
+                <th>Fonte</th>
+            </tr>
+
+            <tr ng-repeat="linha in tabelaSono">
+                <td>{{linha.nome}}</td>
+                <td>{{linha.minHoras}}–{{linha.maxHoras}} h</td>
+                <td>{{linha.fonte}}</td>
+            </tr>
+        </table>
+
+        <h2>Referências</h2>
+
+        <p>
+            <small>
+                OMS, DGS e documento informativo do SNS/CHSJ sobre horas de sono por idade.
+
+<p>
+OMS / WHO — Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age:
+https://www.who.int/publications/i/item/9789241550536
+</p>
+<p>
+Portal SNS / CHSJ — A importância do número de horas de sono:
+https://portal-chsj.min-saude.pt/portalchsj/uploads/writer_file/document/3128/A_importa_ncia_do_nu_mero_de_horas_de_sono.pdf
+</p>
+<p>
+DGS — Programa Nacional de Saúde Infantil e Juvenil:
+https://www.spp.pt/UserFiles/file/Protocolos_Manuais_DGS/Programa_Nacional_Saude_Infantil_Juvenil.pdf
+</p>
+            </small>
+        </p>
+
+    </div>
+</div>
+
+</body>
+</html>
