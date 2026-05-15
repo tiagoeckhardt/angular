@@ -5,190 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de sono por idade - CHSJ</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            background: #eef2f7;
-            color: #1a2c3e;
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            line-height: 1.5;
-        }
-        .container {
-            max-width: 880px;
-            margin: 2rem auto;
-            padding: 1rem;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 2rem 2rem 2rem 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
-        }
-        h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.9rem;
-            color: #0f3b5c;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            border-left: 5px solid #2c7da0;
-            padding-left: 1.2rem;
-        }
-        .sub {
-            color: #4a627a;
-            margin-bottom: 1.8rem;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 0.75rem;
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin: 1.8rem 0 1rem 0;
-            color: #1e4a6e;
-            font-weight: 600;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin: 1.8rem 0 1rem;
-        }
-        @media (max-width: 600px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-        }
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #1e4663;
-            font-size: 0.9rem;
-        }
-        input, select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #cbdde9;
-            border-radius: 16px;
-            font-size: 1rem;
-            background-color: #fefefe;
-            transition: 0.2s;
-            font-family: inherit;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #2c7da0;
-            box-shadow: 0 0 0 3px rgba(44,125,160,0.2);
-            background-color: #ffffff;
-        }
-        .resultado {
-            margin-top: 2rem;
-            background: #edf6fc;
-            border-radius: 24px;
-            padding: 1.6rem 1.8rem;
-            border-left: 6px solid #1f6e8c;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-        }
-        .bom {
-            color: #166534;
-            background: #e0f2e9;
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 600;
-        }
-        .alerta {
-            color: #b91c1c;
-            background: #ffe6e5;
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 600;
-        }
-        .aviso {
-            color: #c2410c;
-            background: #ffede3;
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 600;
-        }
-        .hora {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #1f5e7e;
-            background: white;
-            display: inline-block;
-            padding: 0.2rem 1.5rem;
-            border-radius: 56px;
-            margin: 0.5rem 0 0.8rem;
-            letter-spacing: 2px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.2rem 0 1rem;
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-        }
-        th {
-            background: #eef3fa;
-            padding: 0.9rem 1rem;
-            font-weight: 700;
-            color: #1f4e6e;
-            border-bottom: 1px solid #dce5ef;
-        }
-        td {
-            padding: 0.85rem 1rem;
-            border-bottom: 1px solid #eef2f8;
-        }
-        .references {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            font-size: 0.8rem;
-            color: #4c6a84;
-            border-top: 1px solid #e2edf7;
-            background: #fafdff;
-            border-radius: 16px;
-            padding: 1.2rem;
-        }
-        .references a {
-            color: #22668d;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .references a:hover {
-            text-decoration: underline;
-        }
-        .info-note {
-            font-size: 0.8rem;
-            background: #ffffffcc;
-            padding: 0.8rem 0 0;
-            color: #4f6f8f;
-        }
-        hr {
-            margin: 1rem 0;
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, #cbdde9, transparent);
-        }
-        .estado-badge {
-            margin-top: 12px;
-            margin-bottom: 12px;
-        }
-    </style>
     <script>
         var app = angular.module("sonoApp", []);
 
@@ -246,37 +62,23 @@
                 return "✅ Sono adequado! Dentro do intervalo ideal para a idade.";
             };
 
-            $scope.classeEstado = function() {
-                var rec = $scope.recomendacao();
-                var horas = parseFloat($scope.horasDormidas);
-                if (!rec || isNaN(horas)) return "";
-                if (horas < rec.minHoras) return "alerta";
-                if (horas > rec.maxHoras) return "aviso";
-                return "bom";
-            };
-
-            // Função corrigida para extrair string de hora corretamente
             $scope.obterHoraComoString = function() {
                 var horaValue = $scope.horaAcordar;
                 if (!horaValue) return "07:00";
                 
-                // Se for objeto Date (caso o AngularJS converta)
                 if (typeof horaValue === 'object' && horaValue instanceof Date) {
                     var h = horaValue.getHours();
                     var m = horaValue.getMinutes();
                     return (h < 10 ? '0' + h : h) + ':' + (m < 10 ? '0' + m : m);
                 }
                 
-                // Se for string no formato ISO ou similar
                 if (typeof horaValue === 'string' && horaValue.includes('T')) {
                     var partesData = horaValue.split('T');
                     if (partesData[1]) {
-                        var horaParte = partesData[1].substring(0, 5);
-                        return horaParte;
+                        return partesData[1].substring(0, 5);
                     }
                 }
                 
-                // Se for string normal "HH:mm"
                 if (typeof horaValue === 'string' && horaValue.match(/^\d{2}:\d{2}/)) {
                     return horaValue.substring(0, 5);
                 }
@@ -313,7 +115,6 @@
                 return (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
             };
             
-            // Formata a hora para exibição correta
             $scope.horaAcordarFormatada = function() {
                 return $scope.obterHoraComoString();
             };
@@ -321,83 +122,81 @@
     </script>
 </head>
 <body ng-controller="SonoController">
-    <div class="container">
-        <div class="card">
-            <h1>😴 Calculadora de sono por idade</h1>
-            <div class="sub">Baseado nas recomendações do Centro Hospitalar Universitário de São João (CHSJ) e diretrizes de sono pediátrico.</div>
-            
-            <div class="form-grid">
-                <div>
-                    <label>📅 Idade</label>
-                    <input type="number" ng-model="idade" min="0" max="120" step="1" aria-label="Idade">
-                </div>
-                <div>
-                    <label>📆 Unidade</label>
-                    <select ng-model="unidadeIdade">
-                        <option value="anos">Anos</option>
-                        <option value="meses">Meses (0-36 meses)</option>
-                    </select>
-                    <small style="color:#6c86a3; font-size: 0.7rem;">Cuidado: para bebés use meses até 36m</small>
-                </div>
-                <div>
-                    <label>😴 Horas que costuma dormir (por dia)</label>
-                    <input type="number" ng-model="horasDormidas" min="0" max="24" step="0.5" placeholder="Ex: 8.5">
-                </div>
-                <div>
-                    <label>⏰ Hora que precisa de acordar</label>
-                    <input type="time" ng-model="horaAcordar">
-                </div>
-            </div>
 
-            <div class="resultado" ng-if="recomendacao()">
-                <h2 style="margin-top:0; font-size:1.5rem;">📊 Análise personalizada</h2>
-                <p><strong>🧒 Faixa etária identificada:</strong> {{recomendacao().nome}}</p>
-                <p><strong>📖 Recomendação oficial CHSJ:</strong> {{recomendacao().minHoras}} a {{recomendacao().maxHoras}} horas por noite/dia</p>
-                
-                <div class="estado-badge">
-                    <span ng-class="classeEstado()" style="display:inline-block; font-weight:600; padding:0.4rem 1.2rem; border-radius:32px;">
-                        {{estadoSono()}}
-                    </span>
-                </div>
-                
-                <p style="margin-top: 18px;">🛌 <strong>Para acordar às {{horaAcordarFormatada()}}</strong>, o ideal é deitar-se aproximadamente às:</p>
-                <div class="hora">{{horaIdealDeitar()}}</div>
-                <small class="info-note"><p>* Cálculo baseado na média do intervalo de horas recomendadas ({{ ((recomendacao().minHoras + recomendacao().maxHoras)/2).toFixed(1) }} h). Ajuste conforme necessidades individuais.</small>
-            </div>
+    <h1>😴 Calculadora de sono por idade</h1>
+    <p>Baseado nas recomendações do Centro Hospitalar Universitário de São João (CHSJ) e diretrizes de sono pediátrico.</p>
+    
+    <form>
+        <p>
+            <label>📅 Idade:</label><br>
+            <input type="number" ng-model="idade" min="0" max="120" step="1">
+        </p>
+        <p>
+            <label>📆 Unidade:</label><br>
+            <select ng-model="unidadeIdade">
+                <option value="anos">Anos</option>
+                <option value="meses">Meses (0-36 meses)</option>
+            </select><br>
+            <small>Cuidado: para bebés use meses até 36m</small>
+        </p>
+        <p>
+            <label>😴 Horas que costuma dormir (por dia):</label><br>
+            <input type="number" ng-model="horasDormidas" min="0" max="24" step="0.5" placeholder="Ex: 8.5">
+        </p>
+        <p>
+            <label>⏰ Hora que precisa de acordar:</label><br>
+            <input type="time" ng-model="horaAcordar">
+        </p>
+    </form>
 
-            <div ng-if="!recomendacao()" style="background:#fff0dd; padding:1rem; border-radius:20px; margin:1rem 0;">
-                <span>⚠️ Idade não reconhecida. Verifique os valores (0-120 anos).</span>
-            </div>
+    <hr>
 
-            <h2>📋 Tabela de referência – Horas de sono por idade (CHSJ)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Idade / Grupo</th>
-                        <th>Horas de sono recomendadas (diárias)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="linha in tabelaSono">
-                        <td><strong>{{linha.nome}}</strong></td>
-                        <td>{{linha.minHoras}} – {{linha.maxHoras}} horas</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="background:#f8fafd; padding:0.8rem; border-radius:16px; font-size:0.8rem; margin-top:-0.5rem;">
-                💡 Nota: Valores seguem referências.
-            </div>
-
-            <div class="references">
-                <strong>🏥 Fonte principal (CHSJ):</strong><br>
-                Centro Hospitalar Universitário São João — <a href="https://portal-chsj.min-saude.pt/portalchsj/uploads/writer_file/document/3128/A_importa_ncia_do_nu_mero_de_horas_de_sono.pdf" target="_blank" rel="noopener noreferrer">A importância do número de horas de sono</a><br><br>
-                <strong>📚 Referências de apoio:</strong><br>
-                • Organização Mundial da Saúde: <a href="https://www.who.int/publications/i/item/9789241550536" target="_blank" rel="noopener noreferrer">Guidelines on physical activity, sedentary behaviour and sleep for children under 5</a><br>
-                • Direção-Geral da Saúde (DGS): <a href="https://www.spp.pt/UserFiles/file/Protocolos_Manuais_DGS/Programa_Nacional_Saude_Infantil_Juvenil.pdf" target="_blank" rel="noopener noreferrer">Programa Nacional de Saúde Infantil e Juvenil</a><br>
-                <hr>
-                <span>🔍 *Esta ferramenta tem caráter informativo. Consulte um profissional de saúde para avaliação individualizada.</span>
-            </div>
-        </div>
+    <div ng-if="recomendacao()">
+        <h2>📊 Análise personalizada</h2>
+        <p><strong>🧒 Faixa etária identificada:</strong> {{recomendacao().nome}}</p>
+        <p><strong>📖 Recomendação oficial CHSJ:</strong> {{recomendacao().minHoras}} a {{recomendacao().maxHoras}} horas por noite/dia</p>
+        
+        <p><strong>Estado:</strong> {{estadoSono()}}</p>
+        
+        <p>🛌 <strong>Para acordar às {{horaAcordarFormatada()}}</strong>, o ideal é deitar-se aproximadamente às:</p>
+        <h2>{{horaIdealDeitar()}}</h2>
+        <p><small>* Cálculo baseado na média do intervalo de horas recomendadas ({{ ((recomendacao().minHoras + recomendacao().maxHoras)/2).toFixed(1) }} h). Ajuste conforme necessidades individuais.</small></p>
     </div>
+
+    <div ng-if="!recomendacao()">
+        <p><strong>⚠️ Idade não reconhecida. Verifique os valores (0-120 anos).</strong></p>
+    </div>
+
+    <hr>
+
+    <h2>📋 Tabela de referência</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Idade / Grupo</th>
+                <th>Horas de sono recomendadas (diárias)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="linha in tabelaSono">
+                <td><strong>{{linha.nome}}</strong></td>
+                <td>{{linha.minHoras}} – {{linha.maxHoras}} horas</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <div>
+        <p><strong>🏥 Fonte principal (CHSJ):</strong><br>
+        Centro Hospitalar Universitário São João — <a href="https://portal-chsj.min-saude.pt/portalchsj/uploads/writer_file/document/3128/A_importa_ncia_do_nu_mero_de_horas_de_sono.pdf" target="_blank" rel="noopener noreferrer">A importância do número de horas de sono</a></p>
+        
+        <p><strong>📚 Referências de apoio:</strong><br>
+        • Organização Mundial da Saúde: <a href="https://www.who.int/publications/i/item/9789241550536" target="_blank" rel="noopener noreferrer">Guidelines on physical activity</a><br>
+        • Direção-Geral da Saúde (DGS): <a href="https://www.spp.pt/UserFiles/file/Protocolos_Manuais_DGS/Programa_Nacional_Saude_Infantil_Juvenil.pdf" target="_blank" rel="noopener noreferrer">Programa Nacional de Saúde Infantil e Juvenil</a></p>
+        
+        <p><small>🔍 *Esta ferramenta tem caráter informativo. Consulte um profissional de saúde para avaliação individualizada.</small></p>
+    </div>
+
 </body>
 </html>
